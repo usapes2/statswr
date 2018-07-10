@@ -44,3 +44,102 @@ f4 <- p1 * p2       # 2500$
 f<- c(f1,f2,f3,f4)
 
 Expected_commision <- sum (commition_val * f)
+
+
+
+#Ex4.1
+
+# The probability distribution of X, the number of
+# imperfections per 10 meters of a synthetic fabric in continuous rolls of uniform width, is given in Exercise 3.13
+# on page 92 as
+# x 0 1 2 3 4
+# f(x) 0.41 0.37 0.16 0.05 0.01
+# Find the average number of imperfections per 10 meters of this fabric.
+###Solutions
+x<-c(0:4)
+f<-c(0.41, 0.37, 0.16, 0.05, 0.01)
+avg_number_of_imp <- sum(x*f)
+avg_number_of_imp
+
+#Ex4.2
+###Solution
+x<-(0:3)
+f<-choose(3,x)*((1/4)^x)*(3/4)^(3-x)
+mean_of_x = sum(x*f)
+mean_of_x
+
+# Ex 4.4
+# A coin is biased such that a head is three times
+# as likely to occur as a tail. Find the expected number
+# of tails when this coin is tossed twice.
+
+###Solution
+
+p_h <- 3/4
+p_t <- 1/4
+
+# There are 4 possibilites HH HT TH TT 
+# Let X be the r.v representing the number of tails per event ( 2 tosses ).
+x<- (0:2)
+f<- c(p_h*p_h,2*p_h*p_t,p_t*p_t)
+exp_numberOfTails<-sum(x*f)
+exp_numberOfTails
+# Ex 4.7
+# 
+# By investing in a particular stock, a person can
+# make a profit in one year of $4000 with probability 0.3
+# or take a loss of $1000 with probability 0.7. What is
+# this person’s expected gain?
+
+x<-c(4000,-1000)
+f<-c(0.3,0.7)
+
+exp_gain<-sum(x*f)
+exp_gain
+# Ex 4.13
+# The density function of the continuous random
+# variable X, the total number of hours, in units of 100
+# hours, that a family runs a vacuum cleaner over a pe-
+#   riod of one year, is given in Exercise 3.7 on page 92
+# # as
+# Find the average number of hours per year that families
+# run their vacuum cleaners.
+
+## define the integrated function
+integrand1 <- function(y) {y^2} # 0 to 1
+integrand2 <- function(z) {(2-z)*z} # 1 to 2
+integrand3 <- 0         #else
+
+
+integrate(integrand1,0,1)$value+integrate(integrand2,1,2)$value
+#ex 4.18
+x<-(0:3)
+f<-choose(3,x)*((1/4)^x)*(3/4)^(3-x)
+mean_of_x = sum(x^2*f)
+mean_of_x
+9/8
+
+#Ex 4.29
+
+# Exercise 3.29 on page 93 dealt with an impor-
+#   tant particle size distribution characterized by
+# (a) Plot the density function.
+# (b) Give the mean particle size.
+
+integrand1 <- function(y) {3*y^(-4)} # 1 to inf
+curve(integrand1,1,4)
+integrand1 <- function(y) {(3*y^(-4))*y} # 1 to inf
+integrate(integrand1,1,Inf)$value
+
+#Example 4.11
+x<-(0:3)
+g<-2*x+3
+f<-c(1/4,1/8,1/2,1/8)
+sum(f)
+mean_gOfx <- sum(g*f)
+mean_gOfx  
+
+var_gOfx <- sum (((g-mean_gOfx)^2)*f)
+var_gOfx
+
+
