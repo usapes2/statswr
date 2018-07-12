@@ -141,5 +141,49 @@ mean_gOfx
 
 var_gOfx <- sum (((g-mean_gOfx)^2)*f)
 var_gOfx
+# ex 4.34
+# Let X be a random variable with the following
+# probability distribution:
+#   x −2 3 5
+# f(x) 0.3 0.2 0.5
+# Find the standard deviation of X.
+
+x<- c(-2,3,5)
+f_x <- c(0.3,0.2,0.5)
+mean_x <- sum(x*f_x)
+var <- sum((x^2)*f_x) - mean_x^2
+sqrt(var) # standard deviation.
+# 
+# 
+# The random variable X, representing the num-
+#   ber of errors per 100 lines of software code, has the
+# following probability distribution:
+#   x 2 3 4 5 6
+# f(x) 0.01 0.25 0.4 0.3 0.04
+# Using Theorem 4.2 on page 121, find the variance of
+# X.
+
+x<- c(2,3,4,5,6)
+f_x <- c(0.01,0.25,0.4,0.3,0.04)
+mean_x <- sum(x*f_x)
+var <- sum((x^2)*f_x) - mean_x^2
+# 
+# 
+# For a laboratory assignment, if the equipment is
+# working, the density function of the observed outcome
+# X is
+# f(x) =
+#   ? 2(1 − x),
+# 0 < x < 1,
+# 0, otherwise.
+# Find the variance and standard deviation of X.
 
 
+
+integrand1 <- function(y) {2*(1-y)*y} # 0 to 1
+mean_<-integrate(integrand1,0,1)$value
+integrand1 <- function(y) {2*(1-y)*y^2} # 0 to 1
+mean_xsqred<-integrate(integrand1,0,1)$value
+
+var<-mean_xsqred-mean_^2
+sqrt(var) #Standart deviation
