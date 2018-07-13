@@ -187,3 +187,148 @@ mean_xsqred<-integrate(integrand1,0,1)$value
 
 var<-mean_xsqred-mean_^2
 sqrt(var) #Standart deviation
+
+
+# 4.57 Let X be a random variable with the following
+# probability distribution: Find E(X) and E(X 2 ) and then, using these values,
+#evaluate E[(2X + 1) 2 ].
+
+x <- c(-3,6,9)
+f_x<-c(1/6,1/2,1/3)
+
+E_x <- sum(f_x*x)
+E_x
+E_x2 <- sum(f_x*x^2)
+E_x2
+#(2x_1)^2 = 4x^2 +4x +1 
+
+ans<- 4*E_x2 +4*E_x +1
+ans
+# 
+# 
+# 4.65 Let X represent the number that occurs when a
+# red die is tossed and Y the number that occurs when
+# a green die is tossed. Find
+# (a) E(X + Y );
+# (b) E(X − Y );
+# (c) E(XY ).
+
+x<-c(1,2,3,4,5,6)
+f_x<-c(1/6,1/6,1/6,1/6,1/6,1/6)
+
+#a
+2*sum(x*f_x)
+#b
+0
+#c
+sum(x*f_x)^2
+# Example Binomial Distribution
+# Strictly speaking, the Bernoulli process must possess the following properties:
+# 1. The experiment consists of repeated trials.
+# 2. Each trial results in an outcome that may be classified as a success or a failure.
+# 3. The probability of success, denoted by p, remains constant from trial to trial.
+# 4. The repeated trials are independent.
+# 
+# The number X of successes in n Bernoulli trials is called a binomial random
+# variable. The probability distribution of this discrete random variable is called
+# the binomial distribution, and its values will be denoted by b(x;n,p) since they
+# depend on the number of trials and the probability of a success on a given trial.
+
+
+# The probability that a certain kind of component will survive a shock test is 3/4.
+# Find the probability that exactly 2 of the next 4 components tested survive.
+
+dbinom(2,size=4,prob=3/4)
+# 
+# The probability that a patient recovers from a rare blood disease is 0.4. If 15 people
+# are known to have contracted this disease, what is the probability that (a) at least
+# 10 survive, (b) from 3 to 8 survive, and (c) exactly 5 survive?
+
+#a 
+1-pbinom(9,size=15,0.4) # pbinom is cumulative probability function for binomial distribution pbinom
+#b
+sum(dbinom(3:8,size = 15,0.4))
+#c
+dbinom(5,size = 15,0.4)
+
+# Example 
+# A large chain retailer purchases a certain kind of electronic device from a manu-
+#   facturer. The manufacturer indicates that the defective rate of the device is 3%.
+# (a) The inspector randomly picks 20 items from a shipment. What is the proba-
+#   bility that there will be at least one defective item among these 20?
+#   (b) Suppose that the retailer receives 10 shipments in a month and the inspector
+# randomly tests 20 devices per shipment. What is the probability that there
+# will be exactly 3 shipments each containing at least one defective device among
+# the 20 that are selected and tested from the shipment?
+
+#a Let p be the success - defective item p = 0.03
+1-dbinom(0,size = 20,prob = 0.03)
+#b
+p <- 1-dbinom(0,size = 20,prob = 0.03)
+dbinom(3,size=10,prob = p)
+# 
+# Ex 5.8 
+# According to a study published by a group of Uni-
+#   versity of Massachusetts sociologists, approximately
+# 60% of the Valium users in the state of Massachusetts
+# first took Valium for psychological problems. Find the
+# probability that among the next 8 users from this state
+# who are interviewed,
+# (a) exactly 3 began taking Valium for psychological
+# problems;
+# (b) at least 5 began taking Valium for problems that
+# were not psychological
+
+#a
+dbinom(3,size = 8, prob = 0.6)
+#b
+sum(dbinom(5:8,size = 8, prob = 0.6))
+
+
+# 
+# 5.10 A nationwide survey of college seniors by the
+# University of Michigan revealed that almost 70% dis-
+#   approve of daily pot smoking, according to a report in
+# Parade. If 12 seniors are selected at random and asked
+# their opinion, find the probability that the number who
+# disapprove of smoking pot daily is
+# (a) anywhere from 7 to 9;
+# (b) at most 5;
+# (c) not less than 8
+
+#a
+
+sum(dbinom(7:9,size = 12,prob=0.7))
+
+#b
+
+pbinom(5,size = 12,prob =0.7)
+
+#c
+sum(dbinom(8:12,size = 12,prob=0.7))
+
+# 
+# The probability that a patient recovers from a
+# delicate heart operation is 0.9. What is the probabil-
+#   ity that exactly 5 of the next 7 patients having this
+# operation survive?
+
+dbinom(5,size = 7,prob = 0.9)
+
+# 
+# 
+# In testing a certain kind of truck tire over rugged
+# terrain, it is found that 25% of the trucks fail to com-
+#   plete the test run without a blowout. Of the next 15
+# trucks tested, find the probability that
+# 
+# how many of the 15 trucks
+# would you expect to have blowouts?
+
+# mean = n*p 
+15 * .25
+
+# What is the variance of the number of blowouts ex-
+#perienced by the 15 trucks? What does that mean?
+
+15*.25*.75
